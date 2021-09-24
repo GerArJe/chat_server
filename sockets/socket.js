@@ -20,6 +20,8 @@ io.on('connection', (client) => {
 
   client.on('personal-message', (payload) => {
     console.log(payload);
+
+    io.to(payload.to).emit('personal-message', payload);
   });
 
   client.on('disconnect', () => {

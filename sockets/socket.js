@@ -16,6 +16,12 @@ io.on('connection', (client) => {
   // Cli authenticated
   userConnected(uid);
 
+  client.join(uid);
+
+  client.on('personal-message', (payload) => {
+    console.log(payload);
+  });
+
   client.on('disconnect', () => {
     userDisconnected(uid);
   });
